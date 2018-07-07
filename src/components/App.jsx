@@ -68,13 +68,13 @@ class App extends React.Component {
     var newTicketId = v4()
     var newMasterTicketList = Object.assign({}, this.state.masterTicketList, {
       [newTicketId]: newTicket
-    });
-    newMasterTicketList[newTicketId].formattedWaitTime = newMasterTicketList[newTicketId].timeOpen.fromNow(true);
-    this.setState({masterTicketList: newMasterTicketList});
+    })
+    newMasterTicketList[newTicketId].formattedWaitTime = newMasterTicketList[newTicketId].timeOpen.fromNow(true)
+    this.setState({masterTicketList: newMasterTicketList})
   }
 
   render(){
-    console.log(this.state.masterTicketList);
+    console.log(this.state.masterTicketList)
     return (
       <div>
         <Header/>
