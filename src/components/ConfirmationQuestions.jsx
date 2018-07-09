@@ -10,7 +10,7 @@ function ConfirmationQuestions(props){
   )
 }
 
-ConfirmationQuestions.PropTypes = {
+ConfirmationQuestions.propTypes = {
   onTroubleshootingConfirmation: PropTypes.func
 }
 
