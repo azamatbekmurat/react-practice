@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import c from './../constants'
 
 function Ticket(props){
 
   function handleSavingSelectedTicket(ticketId){
-    const { dispatch } = props;
+    const { dispatch } = props
     const action = {
-      type: 'SELECT_TICKET',
+      type: c.SELECT_TICKET,
       ticketId: ticketId
     };
     dispatch(action);
@@ -31,7 +32,7 @@ function Ticket(props){
     </div>
   if (props.currentRouterPath === '/admin'){
     return (
-      <div onClick={() => {handleSavingSelectedTicket(props.ticketId);}}>
+      <div onClick={() => {handleSavingSelectedTicket(props.ticketId)}}>
         {ticketInformation}
       </div>
     )
@@ -54,4 +55,4 @@ Ticket.propTypes = {
   onTicketSelection: PropTypes.func
 }
 
-export default connect()(Ticket);
+export default connect()(Ticket)

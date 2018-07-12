@@ -1,13 +1,14 @@
-import React from 'react';
-import Header from './Header';
-import TicketList from './TicketList';
-import NewTicketControl from './NewTicketControl';
-import Error404 from './Error404';
-import { Switch, Route, withRouter } from 'react-router-dom';
-import Moment from 'moment';
-import Admin from './Admin';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React from 'react'
+import Header from './Header'
+import TicketList from './TicketList'
+import NewTicketControl from './NewTicketControl'
+import Error404 from './Error404'
+import { Switch, Route, withRouter } from 'react-router-dom'
+import Moment from 'moment'
+import Admin from './Admin'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import c from './../constants';
 
 class App extends React.Component {
 
@@ -15,11 +16,11 @@ class App extends React.Component {
     this.waitTimeUpdateTimer = setInterval(() =>
       this.updateTicketElapsedWaitTime(),
     60000
-    );
+    )
   }
 
   componentWillUnmount(){
-    clearInterval(this.waitTimeUpdateTimer);
+    clearInterval(this.waitTimeUpdateTimer)
   }
 
   updateTicketElapsedWaitTime() {
@@ -28,17 +29,12 @@ class App extends React.Component {
       const ticket = this.props.masterTicketList[ticketId];
       const newFormattedWaitTime = ticket.timeOpen.fromNow(true);
       const action = {
-        type: 'UPDATE_TIME',
+        type: c.UPDATE_TIME,
         id: ticketId,
         formattedWaitTime: newFormattedWaitTime
       };
       dispatch(action);
     });
-    // var newMasterTicketList = Object.assign({}, this.state.masterTicketList);
-    // Object.keys(newMasterTicketList).forEach(ticketId => {
-    //   newMasterTicketList[ticketId].formattedWaitTime = (newMasterTicketList[ticketId].timeOpen).fromNow(true);
-    // });
-    // this.setState({masterTicketList: newMasterTicketList});
   }
 
   render(){
@@ -52,18 +48,18 @@ class App extends React.Component {
           <Route component={Error404} />
         </Switch>
       </div>
-    );
+    )
   }
 }
 
 App.propTypes = {
   masterTicketList: PropTypes.object
-};
+}
 
 const mapStateToProps = state => {
   return {
     masterTicketList: state.masterTicketList
-  };
-};
+  }
+}
 
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps)(App))
